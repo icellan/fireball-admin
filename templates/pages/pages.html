@@ -1,0 +1,60 @@
+<template name="admin_pages">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Pages
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Pages</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            {{#fireball_admin_modal title="Add page" callback=addPageCallback}}
+                <div class="form-group">
+                    <label>Page title</label>
+                    <input type="text" class="form-control" name="page_title">
+                    <label>Page menu title</label>
+                    <input type="text" class="form-control" name="page_short">
+                </div>
+            {{/fireball_admin_modal}}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#fireball_admin_modal">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <div class="box-body no-padding">
+                            <div class="dd page-list">
+                                {{> admin_pages_list pages=pages}}
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div>
+</template>
+
+<template name="admin_pages_list">
+    <ol class="dd-list">
+        {{#each pages}}
+            <li class="dd-item dd3-item" data-id="{{_id}}">
+                <div class="dd-handle dd3-handle">Drag</div>
+                <div class="dd3-content">
+                    <div class="pull-right">
+                        <a href="/admin/page/{{_id}}" class="btn btn-box-tool"><i class="fa fa-edit"></i></a>
+                        <button class="btn btn-box-tool removePage" id="{{_id}}"><i class="fa fa-times"></i></button>
+                    </div>
+                    {{title}}
+                </div>
+                {{#if children}}
+                    {{> admin_pages_list pages=children}}
+                {{/if}}
+            </li>
+        {{/each}}
+    </ol>
+</template>

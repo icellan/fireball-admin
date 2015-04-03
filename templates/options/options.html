@@ -1,0 +1,58 @@
+<template name="admin_template_options">
+    {{#each options}}
+        {{> Template.dynamic template=templateName data=templateData}}
+    {{/each}}
+</template>
+
+<template name="admin_template_options_text">
+    <div class="form-group">
+        <label>{{option.name}}</label>
+        <input type="text" class="form-control" name="{{id}}" id="{{id}}" value="{{value}}" placeholder="{{option.placeholder}}">
+    </div>
+</template>
+
+<template name="admin_template_options_html">
+    <div class="form-group">
+        <label>{{option.name}}</label>
+        {{!-- <p id="{{id}}" class="editable" name="{{id}}" data-type="textarea" data-placeholder="{{option.placeholder}}" data-emptytext="" data-rows="4">{{value}}</p> --}}
+        <textarea id="{{id}}" class="form-control" name="{{id}}" rows="4">{{value}}</textarea>
+    </div>
+</template>
+
+<template name="admin_template_options_email">
+    <div class="form-group">
+        <label>{{option.name}}</label>
+        <input type="email" class="form-control" name="{{id}}" id="{{id}}" value="{{value}}" placeholder="{{option.placeholder}}">
+    </div>
+</template>
+
+<template name="admin_template_options_boolean">
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="{{id}}" id="{{id}}" value="1" checked="{{value}}">
+                {{option.name}}
+            </label>
+        </div>
+    </div>
+</template>
+
+<template name="admin_template_options_parent">
+    <label>{{option.name}}</label>
+    {{#if option.description}}<p>{{option.description}}</p>{{/if}}
+    <div class="template-option-child">
+        {{#each children}}
+            {{> Template.dynamic template=templateName data=templateData}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="admin_template_options_array">
+    <label>{{option.name}}</label>
+    {{#if option.description}}<p>{{option.description}}</p>{{/if}}
+    <div class="template-option-child">
+        {{#each contents}}
+            {{> Template.dynamic template=templateName data=templateData}}
+        {{/each}}
+    </div>
+</template>

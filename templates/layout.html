@@ -1,0 +1,22 @@
+<template name="adminLayout">
+    <div class="adminLayout">
+        {{#if loggingIn}}
+            <!-- We should do something -->
+        {{else}}
+            {{#if currentUser}}
+                <div class="skin-blue">
+                    <div class="wrapper">
+                        {{> admin_header}}
+                        {{> admin_sidebar}}
+                        {{> yield}}
+                        {{> admin_footer}}
+                    </div>
+                </div>
+            {{else}}
+                {{> admin_login}}
+            {{/if}}
+        {{/if}}
+    </div>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js" type="text/javascript"></script>
+</template>

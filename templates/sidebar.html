@@ -1,0 +1,36 @@
+<template name="admin_sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <form class="sidebar-form searchForm">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                    <span class="input-group-btn">
+                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <ul class="sidebar-menu">
+                <li class="header">MAIN NAVIGATION</li>
+                <li class="treeview">
+                    <a href="/admin/settings">
+                        <i class="fa fa-gear"></i>
+                        <span>Site settings</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="/admin/pages">
+                        <i class="fa fa-files-o"></i>
+                        <span>Pages</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="/admin/users">
+                        <i class="fa fa-group"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+</template>
